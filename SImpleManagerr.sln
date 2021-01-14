@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleManager", "SImpleManagerr\SimpleManager.csproj", "{E08AADBB-AECF-417A-B946-C72D22569427}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E08AADBB-AECF-417A-B946-C72D22569427}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E08AADBB-AECF-417A-B946-C72D22569427}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E08AADBB-AECF-417A-B946-C72D22569427}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E08AADBB-AECF-417A-B946-C72D22569427}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2B82D353-8B3D-421C-A203-61C5B585E612}
+	EndGlobalSection
+EndGlobal
