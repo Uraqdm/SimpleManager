@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SimpleManager.Models
 {
@@ -8,7 +9,9 @@ namespace SimpleManager.Models
         public int OrderId { get; set; }
         public string OrderName { get; set; }
         public string OrderDescription { get; set; }
+        [ForeignKey("Customer_CustomerId")]
         public Customer Customer { get; set; }
+        [ForeignKey("Employee_EmployeeId")]
         public Employee Employee { get; set; }
         public decimal OrderPrice { get; set; }
         public DateTime OrderDate { get; set; }

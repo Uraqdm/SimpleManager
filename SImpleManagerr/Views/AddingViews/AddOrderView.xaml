@@ -1,0 +1,136 @@
+﻿<Page x:Class="SimpleManager.Views.AddingViews.AddOrderView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimpleManager.Views.AddingViews"
+      xmlns:VM="clr-namespace:MyManager.ViewModels.AddPageViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddOrderView">
+
+
+    <Page.DataContext>
+        <VM:AddOrderVM/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/1.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel  Grid.Column="1" Margin="0,30">
+            <StackPanel.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFF0DC65" Offset="0" />
+                    <GradientStop Color="#FFFF9E5C" Offset="1" />
+                </LinearGradientBrush>
+            </StackPanel.Background>
+
+            <TextBlock Text="Добавление нового Заказа" Style="{StaticResource Header}" Margin="10"/>
+            <Separator Margin="75,10" Background="#FF616161"/>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock TextAlignment="Center">
+                        <Run Text="Название заказа"/>
+                        <Run Text="*" Foreground="Red"/>
+                </TextBlock>
+                <TextBox Grid.Column="1" Text="{Binding OrderName,  UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock TextAlignment="Center">
+                        <Run Text="Описание заказа"/>
+                </TextBlock>
+                <TextBox Grid.Column="1" Text="{Binding OrderDescription, UpdateSourceTrigger=PropertyChanged}"/>
+            </Grid>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock TextAlignment="Center">
+                        <Run Text="Ответственный за заказ"/>
+                        <Run Text="*" Foreground="Red"/>
+                </TextBlock>
+                <ComboBox Grid.Column="1" ItemsSource="{Binding Path=Employees}" SelectedItem="{Binding Employee}"/>
+            </Grid>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock TextAlignment="Center">
+                        <Run Text="Заказчик"/>
+                        <Run Text="*" Foreground="Red"/>
+                </TextBlock>
+                <StackPanel Grid.Column="1">
+                    <ComboBox ItemsSource="{Binding Customers}" SelectedItem="{Binding Customer}" />
+                    <Button Style="{StaticResource GreenButton}"
+                            Command="{Binding AddNewCustomer}"
+                            Content="Добавить нового заказчика"
+                            Margin="5"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock TextAlignment="Center">
+                        <Run Text="Дедлайн"/>
+                        <Run Text="*" Foreground="Red"/>
+                </TextBlock>
+                <DatePicker Grid.Column="1"
+                            SelectedDate="{Binding Path=DeadLine}"
+                            FontSize="{StaticResource Regular}" />
+            </Grid>
+
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock TextAlignment="Center">
+                        <Run Text="Оплата"/>
+                        <Run Text="*" Foreground="Red"/>
+                </TextBlock>
+                <TextBox Grid.Column="1" Text="{Binding Path=OrderPrice, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+            </Grid>
+
+            <Button Content="Добавить" 
+                    Style="{StaticResource AgreeButton}"
+                    Margin="100,15"
+                    Command="{Binding AddOrder}"/>
+            <Button Content="Отмена"
+                    Style="{StaticResource CancelButton}"
+                    Margin="100,5"
+                    IsCancel="True"
+                    Command="{Binding Cancel}"/>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,71 @@
+﻿<Page x:Class="SimpleManager.Views.OtherViews.MenuView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SimpleManager.Views.OtherViews"
+      xmlns:VM="clr-namespace:SimpleManager.ViewModels.TableViewModels"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MenuView">
+
+    <Page.DataContext>
+        <VM:MenuVM/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFF0DC65" Offset="0" />
+                    <GradientStop Color="#FFFF9E5C" Offset="1" />
+                </LinearGradientBrush>
+            </Grid.Background>
+
+            <StackPanel Grid.Row="1">
+                <TextBlock TextAlignment="Center" TextWrapping="WrapWithOverflow" Margin="5">
+                    <Run Text="{Binding LastName, Mode=OneTime}"/>
+                    <Run Text="{Binding FirstName, Mode=OneTime}"/>
+                    <Run Text="{Binding MiddleName, Mode=OneTime}"/>
+                </TextBlock>
+
+                <Separator Margin="25,10" Background="#FF616161"/>
+                <ListBox ItemsSource="{Binding Pages}"
+                         SelectedItem="{Binding SelectedPageItem}"
+                         Background="Transparent"
+                         BorderBrush="Transparent">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Margin="2">
+                                    <ContentControl Content="{StaticResource CollaborationIcon}" Width="30"/>
+                                </Grid>
+
+                                <TextBlock Grid.Column="1"
+                                           Text="{Binding DisplayablePageName}"
+                                           HorizontalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Separator Margin="25,10" Background="#FF616161"/>
+                <Button Style="{StaticResource MenuButton}"
+                        Content="Выход"
+                        Command="{Binding BackToAuthPage}"/>
+            </StackPanel>
+        </Grid>
+
+        <Frame Grid.Column="1" Source="{Binding SelectedPageItem.PageUri}">
+        </Frame>
+    </Grid>
+</Page>
