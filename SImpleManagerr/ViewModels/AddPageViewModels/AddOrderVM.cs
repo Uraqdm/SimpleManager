@@ -10,9 +10,9 @@ using System.Windows;
 using SimpleManager.Views.AddingViews;
 using SimpleManager.Views.TableViews;
 
-namespace MyManager.ViewModels.AddPageViewModels
+namespace SimpleManager.ViewModels.AddPageViewModels
 {
-    class AddOrderVM: BaseVM
+    class AddOrderVM: ChangeTableBaseVM
     {
         private readonly Order model;
         public ObservableCollection<Employee> Employees { get; private set; }

@@ -11,6 +11,8 @@ namespace SimpleManager.ViewModels.AddPageViewModels
 {
     class AddEmployeeVM : AddPersonBaseVM
     {
+        #region properties
+
         private Employee employee;
         public string Login
         {
@@ -49,7 +51,11 @@ namespace SimpleManager.ViewModels.AddPageViewModels
             }
         }
 
-        public ObservableCollection<Role> Roles => new ObservableCollection<Role> { Models.Role.Staff, Models.Role.Admin, Models.Role.Boss };
+        public ObservableCollection<Role> Roles { get; } = new ObservableCollection<Role> { Models.Role.Staff, Models.Role.Admin, Models.Role.Boss };
+
+        #endregion
+
+        #region Commands
 
         public DelegateCommand AddEmployee => new DelegateCommand((obj) =>
         {
@@ -62,6 +68,8 @@ namespace SimpleManager.ViewModels.AddPageViewModels
             
         }, (obj) => NullOrEmpty());
 
+        #endregion
+
         protected override bool NullOrEmpty()
         {
             if ((int)AuthVM.CurrentUser.Role > (int)employee.Role && !string.IsNullOrEmpty(Login) && !string.IsNullOrEmpty(Password))
@@ -71,10 +79,14 @@ namespace SimpleManager.ViewModels.AddPageViewModels
             else return false;
         }
 
+        #region Ctor
+
         public AddEmployeeVM()
         {
             model = new Employee();
             employee = model as Employee;
         }
+
+        #endregion 
     }
 }

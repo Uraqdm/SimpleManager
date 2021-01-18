@@ -2,7 +2,7 @@
 
 namespace SimpleManager.ViewModels.AddPageViewModels
 {
-    abstract class AddPersonBaseVM: BaseVM
+    abstract class AddPersonBaseVM: ChangeTableBaseVM
     {
         #region Properties
 

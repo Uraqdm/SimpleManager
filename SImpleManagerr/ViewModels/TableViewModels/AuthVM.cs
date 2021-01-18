@@ -38,7 +38,9 @@ namespace SimpleManager.ViewModels.TableViewModels
         {
             authBttnPressed = true;
             new Thread(() => MessageBox.Show("Выполняется авторизация, пожалуйста, подождите")).Start();
-            await Task.Run(() => CurrentUser = SimpleManagerContext.DataBase.Employees.Where(employe => employe.Password == Password && employe.Login == Login).FirstOrDefault());
+            await Task.Run(() => CurrentUser = SimpleManagerContext.DataBase.Employees
+                .Where(employe => employe.Password == Password && employe.Login == Login)
+                .FirstOrDefault());
             authBttnPressed = false;
             if (CurrentUser == null)
             {
