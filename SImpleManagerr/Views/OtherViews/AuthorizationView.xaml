@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:SimpleManager.Views.OtherViews"
       xmlns:vm="clr-namespace:SimpleManager.ViewModels.TableViewModels"
       mc:Ignorable="d" 
+      ShowsNavigationUI="False"
       d:DesignHeight="450" d:DesignWidth="800">
 
     <Page.DataContext>
