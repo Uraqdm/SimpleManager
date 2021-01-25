@@ -27,7 +27,7 @@ namespace SimpleManager.ViewModels.TableViewModels
             }
         }
 
-        public Order SelectedOrder { get; set; }
+        public static Order SelectedOrder { get; set; }
 
         #endregion
 
@@ -43,12 +43,20 @@ namespace SimpleManager.ViewModels.TableViewModels
                 MessageBox.Show($"{SelectedOrder.OrderName} успешно удален!");
                 NavigationHandler.NavigationService.Refresh();
             }
-            else MessageBox.Show("Выберете элемент для удаления");
+            else MessageBox.Show("Выберете элемент");
         }, (obj) => (int)AuthVM.CurrentUser.Role > 0);
 
         public DelegateCommand AddOrder => new DelegateCommand((obj) =>
         {
+            SelectedOrder = null;
             NavigationHandler.NavigationService.Navigate(new AddOrderView());
+        });
+
+        public DelegateCommand ChangeSelectedOrder => new DelegateCommand(obj =>
+        {
+            if (SelectedOrder != null)
+                NavigationHandler.NavigationService.Navigate(new AddOrderView());
+            else MessageBox.Show("Выберете элемент");
         });
 
         #endregion

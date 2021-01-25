@@ -32,7 +32,7 @@
                 </MenuItem.Header>
             </MenuItem>
             <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5"/>
-            <MenuItem>
+            <MenuItem Command="{Binding ChangeSelectedOrder}">
                 <MenuItem.Header>
                     <ContentControl Content="{StaticResource EditIcon}"/>
                 </MenuItem.Header>

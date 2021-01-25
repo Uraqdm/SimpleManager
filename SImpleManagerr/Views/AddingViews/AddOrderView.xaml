@@ -122,10 +122,10 @@
                 </TextBox>
             </Grid>
 
-            <Button Content="Добавить" 
+            <Button Content="Изменить" 
                     Style="{StaticResource AgreeButton}"
                     Margin="100,15"
-                    Command="{Binding AddOrder}"/>
+                    Command="{Binding ChangeOrder}"/>
             <Button Content="Отмена"
                     Style="{StaticResource CancelButton}"
                     Margin="100,5"
