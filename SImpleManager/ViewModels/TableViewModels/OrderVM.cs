@@ -65,7 +65,7 @@ namespace SimpleManager.ViewModels.TableViewModels
 
         private void ExportOrderTableToExcel(object obj)
         {
-            ExportDataToExcel("Заказы", SimpleManagerContext.DataBase.Orders.ToDataTable());
+            ExporterToExcel.ExportDataToExcel(DisplayablePageName, SimpleManagerContext.DataBase.Orders.ToDataTable());
         }
 
         #endregion

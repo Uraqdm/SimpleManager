@@ -41,7 +41,6 @@ namespace SimpleManager.ViewModels.TableViewModels
                 NavigationHandler.NavigationService.Navigate(new AddCustomerView());
             });
         }
-        public object SImpleManagerContext { get; private set; }
 
         #endregion
 
@@ -49,7 +48,7 @@ namespace SimpleManager.ViewModels.TableViewModels
 
         private void ExportCustomersTableToExcel(object obj)
         {
-            ExportDataToExcel("Заказчики", SimpleManagerContext.DataBase.Customers.ToDataTable());
+            ExporterToExcel.ExportDataToExcel(DisplayablePageName, SimpleManagerContext.DataBase.Customers.ToDataTable());
         }
 
         #endregion

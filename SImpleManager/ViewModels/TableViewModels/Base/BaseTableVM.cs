@@ -5,6 +5,7 @@ using System;
 using System.Data;
 using SimpleManager.Commands;
 using SimpleManager.Handlers;
+using System.Collections.Generic;
 
 namespace SimpleManager.ViewModels
 {
@@ -14,7 +15,7 @@ namespace SimpleManager.ViewModels
 
         public Uri PageUri { get; }
         public string PageName { get; }
-        public string DisplayablePageName { get; set; }
+        public string DisplayablePageName { get; }
 
         #endregion
 
@@ -31,25 +32,6 @@ namespace SimpleManager.ViewModels
         {
             NavigationHandler.NavigationService.GoBack();
         });
-
-        #endregion
-
-        #region Protected methods
-
-        protected void ExportDataToExcel(string name, DataTable table)
-        {
-            XLWorkbook WB = new XLWorkbook();
-            WB.Worksheets.Add(table, name);
-            try
-            {
-                var desctopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-                WB.SaveAs($"{desctopPath}/{name}.xlsx");
-            }
-            catch (IOException)
-            {
-                MessageBox.Show("Не удается сохранить файл. Закройте файл и попробуйте снова.");
-            }
-        }
 
         #endregion
 

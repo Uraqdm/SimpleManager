@@ -45,7 +45,7 @@ namespace SimpleManager.ViewModels.TableViewModels
 
         private void ExportEmployeesTableToExcel(object name)
         {
-            ExportDataToExcel("Сотрудники", SimpleManagerContext.DataBase.Employees.ToDataTable());
+            ExporterToExcel.ExportDataToExcel(DisplayablePageName, SimpleManagerContext.DataBase.Employees.ToDataTable());
         }
 
         #endregion

@@ -19,7 +19,7 @@ namespace SimpleManager.ViewModels.TableViewModels
 
         private void ExportJournalTableToExcel(object obj)
         {
-            ExportDataToExcel("Журнал", SimpleManagerContext.DataBase.Journal.ToDataTable());
+            ExporterToExcel.ExportDataToExcel(DisplayablePageName, SimpleManagerContext.DataBase.Journal.ToDataTable());
         }
 
         #endregion
