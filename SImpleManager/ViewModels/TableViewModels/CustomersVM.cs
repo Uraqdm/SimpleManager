@@ -12,7 +12,7 @@ namespace SimpleManager.ViewModels.TableViewModels
     {
         #region Properties
 
-        public Customer SelectedCustomer { get; set; }
+        public static Customer SelectedCustomer { get; set; }
         public ObservableCollection<Customer> Customers => new ObservableCollection<Customer>(SimpleManagerContext.DataBase.Customers);
 
         #endregion
