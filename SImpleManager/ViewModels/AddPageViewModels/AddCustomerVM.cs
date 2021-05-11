@@ -9,7 +9,7 @@ namespace SimpleManager.ViewModels.AddPageViewModels
 {
     class AddCustomerVM: AddPersonBaseVM
     {
-        public DelegateCommand AddCustomer => new DelegateCommand((obj) =>
+        public DelegateCommand SaveCustomer => new DelegateCommand((obj) =>
         {
             SimpleManagerContext.DataBase.Customers.Add(model as Customer);
             SimpleManagerContext.DataBase.SaveChanges();
