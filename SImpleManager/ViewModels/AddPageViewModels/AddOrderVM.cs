@@ -106,28 +106,17 @@ namespace SimpleManager.ViewModels.AddPageViewModels
         {
             if(OrderVM.SelectedOrder != null)
             {
-                foreach (var element in SimpleManagerContext.DataBase.Orders.Where(order => order.OrderId == model.OrderId))
-                {
-                    element.OrderName = model.OrderName;
-                    element.OrderDescription = model.OrderDescription;
-                    element.OrderPrice = model.OrderPrice;
-                    element.Status = model.Status;
-                    element.OrderDate = model.OrderDate;
-                    element.Employee = model.Employee;
-                    element.Customer = model.Customer;
-                }
-                SimpleManagerContext.DataBase.SaveChanges();
+                SimpleManagerContext.DataBase.Entry(OrderVM.SelectedOrder).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
                 JournalVM.AddRecord($"Изменил заказаз номер {model.OrderId}");
                 MessageBox.Show($"Заказ под названием {model} успешно изменен");
             }
-
             else
             {
                 SimpleManagerContext.DataBase.Orders.Add(model);
                 JournalVM.AddRecord($"Добавил заказаз номер {model.OrderId}");
                 MessageBox.Show($"Заказ под названием {model} успешно добавлен");
             }
-
+            SimpleManagerContext.DataBase.SaveChanges();
             NavigationHandler.NavigationService.GoBack();
         }, (obj) => !string.IsNullOrEmpty(OrderName) && model.Customer != null && model.Employee != null && model.OrderPrice >= 0 && model.OrderDate < DeadLine);
         
