@@ -62,7 +62,6 @@ namespace SimpleManager.ViewModels.AddPageViewModels
             SimpleManagerContext.DataBase.Employees.Add(employee);
             SimpleManagerContext.DataBase.SaveChanges();
             JournalVM.AddRecord($"Добавил сотрудника {model}");
-            MailHandler.SendMessage(new System.Net.Mail.MailAddress(model.Email), "Проверка связи");
             MessageBox.Show($"{model} Успешно добавлен");
             NavigationHandler.NavigationService.Navigate(new EmployeeView());
             
