@@ -41,6 +41,14 @@ namespace SimpleManager.ViewModels.TableViewModels
                 NavigationHandler.NavigationService.Navigate(new AddCustomerView());
             });
         }
+        public DelegateCommand ChangeCustomer => new((obj) =>
+        {
+            if(SelectedCustomer != null)
+                NavigationHandler.NavigationService.Navigate(new AddCustomerView());
+            else
+                MessageBox.Show("Выберете заказчика");
+
+        });
 
         #endregion
 
