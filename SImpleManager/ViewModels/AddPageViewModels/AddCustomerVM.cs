@@ -11,16 +11,27 @@ namespace SimpleManager.ViewModels.AddPageViewModels
     {
         public DelegateCommand SaveCustomer => new DelegateCommand((obj) =>
         {
-            SimpleManagerContext.DataBase.Customers.Add(model as Customer);
+            if(CustomersVM.SelectedCustomer != null)
+            {
+                SimpleManagerContext.DataBase.Entry(CustomersVM.SelectedCustomer).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                JournalVM.AddRecord($"Изменил заказчика {CustomersVM.SelectedCustomer}");
+            }
+            else
+            {
+                SimpleManagerContext.DataBase.Customers.Add(model as Customer);
+                JournalVM.AddRecord($"Добавил заказчика {model}");
+            }
+            
             SimpleManagerContext.DataBase.SaveChanges();
-            JournalVM.AddRecord($"Добавил заказчика {model}");
-            MessageBox.Show($"{model} успешно добавлен!");
+            
+            MessageBox.Show($"Изменения сохранены");
+            CustomersVM.SelectedCustomer = null;
             NavigationHandler.NavigationService.GoBack();
         },(obj) => NullOrEmpty());
 
         public AddCustomerVM()
         {
-            model = new Customer();
+            model = CustomersVM.SelectedCustomer ?? new Customer();
         }
     }
 }

@@ -97,10 +97,10 @@
                 <TextBox VerticalAlignment="Center" Grid.Column="1" Text="{Binding Email}"/>
             </Grid>
 
-            <Button Content="Добавить" 
+            <Button Content="Сохранить изменения" 
                     Style="{StaticResource AgreeButton}"
                     Margin="100,15"
-                    Command="{Binding AddCustomer}"/>
+                    Command="{Binding SaveCustomer}"/>
             <Button Content="Отмена"
                     Style="{StaticResource CancelButton}"
                     Margin="100,5"
