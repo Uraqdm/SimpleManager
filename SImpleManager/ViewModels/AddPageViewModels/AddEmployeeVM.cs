@@ -59,10 +59,19 @@ namespace SimpleManager.ViewModels.AddPageViewModels
 
         public DelegateCommand AddEmployee => new DelegateCommand((obj) =>
         {
-            SimpleManagerContext.DataBase.Employees.Add(employee);
+            if(EmployessVM.SelectedEmployee != null)
+            {
+                SimpleManagerContext.DataBase.Entry(EmployessVM.SelectedEmployee).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+                JournalVM.AddRecord($"Изменил свойства сотрудника {model}");
+            }
+            else
+            {
+                SimpleManagerContext.DataBase.Employees.Add(employee);
+                JournalVM.AddRecord($"Добавил сотрудника {model}");
+
+            }
             SimpleManagerContext.DataBase.SaveChanges();
-            JournalVM.AddRecord($"Добавил сотрудника {model}");
-            MessageBox.Show($"{model} Успешно добавлен");
+            MessageBox.Show($"Изменения сохранены");
             NavigationHandler.NavigationService.Navigate(new EmployeeView());
             
         }, (obj) => NullOrEmpty());
