@@ -42,16 +42,8 @@
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <Grid Margin="5">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
 
-                                <Grid Margin="2">
-                                    <ContentControl Content="{StaticResource CollaborationIcon}" Width="30"/>
-                                </Grid>
-
-                                <TextBlock Grid.Column="1"
+                                <TextBlock
                                            Text="{Binding DisplayablePageName}"
                                            HorizontalAlignment="Center"/>
                             </Grid>
