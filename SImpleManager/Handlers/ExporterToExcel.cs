@@ -19,7 +19,7 @@ namespace SimpleManager.Handlers
             WB.Worksheets.Add(table, name);
             try
             {
-                var desctopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+                var desctopPath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
                 WB.SaveAs($"{desctopPath}/{name}.xlsx");
                 return true;
             }
